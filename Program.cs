@@ -18,13 +18,12 @@ namespace Assessment3
             }
         }
 
-        void BinarySearch(string[] list, string item, bool found)  //changes item from int to string
+        public static int BinarySearch(string[] list, string item, ref bool found)  //changes item from int to string
         {
             int midPoint;
             int first = 0;
             int last = list.Length - 1;
             bool moreToSearch = first <= last;
-            found = false;
 
             while (moreToSearch && !found)
             {
@@ -42,15 +41,17 @@ namespace Assessment3
                 }
                 else
                 {
-                    item = list[midPoint];
                     found = true;
+                    return midPoint;
                 }
             }
+            return -1;
         }
 
         static void Main(string[] args)
         {
             string[] stringArray = {"Jon", "Dot", "Eva", "Roy", "Guy", "Jan", "Tom", "Jim", "Ann", "Kim", "Ron", "Tim", "Kay", "Amy"};
+            bool found = false;
 
             BubbleSort(stringArray, stringArray.Length);
 
@@ -69,6 +70,19 @@ namespace Assessment3
                 {
                     Console.Write(" " + i + "  ");
                 }
+            }
+            Console.WriteLine();
+            Console.Write("Enter name to search : ");
+            string name = Console.ReadLine();
+
+            int indexFound = BinarySearch(stringArray, name, ref found);
+            if (found)
+            {
+                Console.WriteLine($"{name} has been found at index {indexFound}");
+            }
+            else 
+            {
+                Console.WriteLine($"{name} cant be found");
             }
 
         }
