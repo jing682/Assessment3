@@ -18,7 +18,7 @@ namespace Assessment3
             }
         }
 
-        void BinarySearch(string[] list, int item, bool found)
+        void BinarySearch(string[] list, string item, bool found)  //changes item from int to string
         {
             int midPoint;
             int first = 0;
@@ -30,19 +30,19 @@ namespace Assessment3
             {
                 midPoint = (first + last) / 2;
 
-                if (item < list.info[midPoint])
+                if (string.Compare(item, list[midPoint]) < 0)  // translated to c++ = item < list.info[midPoint]
                 {
-                    last = midPoint – 1;
+                    last = midPoint - 1;
                     moreToSearch = first <= last;
                 }
-                else if (item > list.info[midPoint])
+                else if (string.Compare(item, list[midPoint]) > 0)  // translated to c++ = item > list.info[midPoint]
                 {
                     first = midPoint + 1;
                     moreToSearch = first <= last;
                 }
                 else
                 {
-                    item = list.info[midPoint];
+                    item = list[midPoint];
                     found = true;
                 }
             }
