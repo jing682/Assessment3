@@ -1,4 +1,4 @@
-﻿namespace Assessment3
+namespace Assessment3
 {
     internal class Program
     {
@@ -14,6 +14,36 @@
                         array[j] = array[j + 1];
                         array[j + 1] = temp;
                     }
+                }
+            }
+        }
+
+        void BinarySearch(string[] list, int item, bool found)
+        {
+            int midPoint;
+            int first = 0;
+            int last = list.Length - 1;
+            bool moreToSearch = first <= last;
+            found = false;
+
+            while (moreToSearch && !found)
+            {
+                midPoint = (first + last) / 2;
+
+                if (item < list.info[midPoint])
+                {
+                    last = midPoint – 1;
+                    moreToSearch = first <= last;
+                }
+                else if (item > list.info[midPoint])
+                {
+                    first = midPoint + 1;
+                    moreToSearch = first <= last;
+                }
+                else
+                {
+                    item = list.info[midPoint];
+                    found = true;
                 }
             }
         }
